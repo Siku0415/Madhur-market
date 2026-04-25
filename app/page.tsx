@@ -12,7 +12,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/">
             <img 
-              src="https://madhurbazar.online/assets/img/logo-2.png" 
+              src="https://madhurbazar.online/assets/img/logo.png" 
               alt="Madhur Bazar Logo" 
               className="h-12 w-auto" 
             />
@@ -177,7 +177,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-md">
               <img 
-                src="https://madhurbazar.online/assets/img/logo-2.png" 
+                src="https://madhurbazar.online/assets/img/logo.png" 
                 alt="Logo" 
                 className="h-12 mb-6" 
               />
@@ -267,11 +267,11 @@ function GameCard({ name, time, result }: { name: string; time: string; result: 
           </div>
         </div>
         
-        <div className="bg-gray-50 p-3 rounded-full group-hover:bg-[#fab028]/10 transition-colors">
+        <div className="bg-gray-50 p-3 rounded-full group-hover:bg-[#fab028]/10 transition-colors text-gray-400">
           <img src="https://madhurbazar.online/assets/home/images/graph-icon81.png" alt="Chart" className="w-8 opacity-20 group-hover:opacity-100 transition-all grayscale group-hover:grayscale-0" />
         </div>
         
-        <div className="text-[10px] font-black text-gray-300 uppercase tracking-widest">
+        <div className="text-[10px] font-black text-gray-300 uppercase tracking-widest" suppressHydrationWarning>
           {formattedDate}
         </div>
       </div>
