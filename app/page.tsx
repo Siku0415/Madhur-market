@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Download } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
 
 export default function Home() {
@@ -10,11 +11,18 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white border-b border-gray-100 py-3 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link href="/">
+          <Link href="/" className="flex items-center" id="header-logo-link">
             <img 
-              src="https://madhurbazar.online/assets/img/logo.png" 
+              src="https://images.weserv.nl/?url=madhurbazar.online/assets/img/logo.png&w=400" 
               alt="Madhur Bazar Logo" 
               className="h-12 w-auto" 
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                if (!target.src.includes('logo-2.png')) {
+                  target.src = "https://images.weserv.nl/?url=madhurbazar.online/assets/img/logo-2.png&w=400";
+                }
+              }}
             />
           </Link>
           <button className="md:hidden text-gray-600 focus:outline-none">
@@ -27,12 +35,13 @@ export default function Home() {
             <Link href="#charts" className="hover:text-[#fab028] transition-colors">Charts</Link>
             <div className="text-end ml-4">
               <a 
-                href="https://madhurbazar.online/app/madhurbazar.apk" 
-                onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'Header' })}
-                className="text-white bg-[#fab028] py-2.5 px-6 text-sm font-black rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_20px_rgba(250,176,40,0.3)] shadow-lg inline-block"
-              >
-                DOWNLOAD APP
-              </a>
+            id="header-download-button"
+            href="https://madhurbazar.online/app/madhurbazar.apk" 
+            onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'Header' })}
+            className="text-white bg-[#fab028] py-2.5 px-6 text-sm font-black rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_20px_rgba(250,176,40,0.3)] shadow-lg inline-block"
+          >
+            DOWNLOAD APP
+          </a>
             </div>
           </nav>
         </div>
@@ -44,6 +53,7 @@ export default function Home() {
           src="https://madhurbazar.online/assets/home/images/bannerimage.jpg" 
           alt="Banner" 
           className="w-full h-auto object-cover max-h-[500px]" 
+          referrerPolicy="no-referrer"
         />
       </section>
 
@@ -51,6 +61,7 @@ export default function Home() {
       <section className="py-10 px-4 text-center bg-white">
         <div className="container mx-auto">
           <a 
+            id="hero-download-button"
             href="https://madhurbazar.online/app/madhurbazar.apk" 
             onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'Below Hero' })}
             className="inline-flex items-center justify-center gap-3 w-full md:w-auto text-white bg-[#fab028] py-4 px-12 rounded-full text-xl font-black shadow-[0_10px_30px_rgba(250,176,40,0.4)] hover:scale-105 transition-all duration-300 active:scale-95"
@@ -103,6 +114,7 @@ export default function Home() {
       <section className="py-12 px-4 text-center bg-white overflow-hidden">
         <div className="container mx-auto">
           <a 
+            id="footer-download-button"
             href="https://madhurbazar.online/app/madhurbazar.apk" 
             onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'Hero' })}
             className="block text-center w-full max-w-2xl mx-auto rounded-3xl p-8 uppercase bg-[#fab028] text-white text-lg font-black transition-all duration-300 relative shadow-2xl hover:scale-[1.02]"
@@ -177,9 +189,16 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-md">
               <img 
-                src="https://madhurbazar.online/assets/img/logo.png" 
+                src="https://images.weserv.nl/?url=madhurbazar.online/assets/img/logo.png&w=400" 
                 alt="Logo" 
                 className="h-12 mb-6" 
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (!target.src.includes('logo-2.png')) {
+                    target.src = "https://images.weserv.nl/?url=madhurbazar.online/assets/img/logo-2.png&w=400";
+                  }
+                }}
               />
               <p className="text-gray-500 font-medium leading-relaxed">
                 Madhur Bazar is india&apos;s leading online matka platform providing fastest results and most secure gaming experience.
@@ -212,13 +231,16 @@ export default function Home() {
       {/* Sticky Bottom Download Button */}
       <div className="fixed bottom-0 left-0 w-full p-4 z-[100] md:hidden">
         <a 
+          id="sticky-download-button"
+          aria-label="Sticky Download Now Button"
           href="https://madhurbazar.online/app/madhurbazar.apk" 
           onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'Sticky Bottom' })}
           className="flex items-center justify-center gap-3 w-full text-white bg-[#fab028] py-4 rounded-2xl text-lg font-black shadow-[0_-5px_25px_rgba(250,176,40,0.4)] border border-white/20 active:scale-95 transition-transform"
         >
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2v-2zm0-10h2v8h-2V6z"></path>
-          </svg>
+          <div className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-sm font-bold">
+            N
+          </div>
+          <Download className="w-6 h-6 animate-bounce" />
           DOWNLOAD NOW
         </a>
       </div>
@@ -234,6 +256,7 @@ function RateCard({ title, rate }: { title: string; rate: string }) {
           src="https://madhurbazar.online/assets/home/images/icon.png" 
           alt="icon" 
           className="max-w-[40px] opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0" 
+          referrerPolicy="no-referrer"
         />
       </div>
       <h4 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{title}</h4>
@@ -268,7 +291,12 @@ function GameCard({ name, time, result }: { name: string; time: string; result: 
         </div>
         
         <div className="bg-gray-50 p-3 rounded-full group-hover:bg-[#fab028]/10 transition-colors text-gray-400">
-          <img src="https://madhurbazar.online/assets/home/images/graph-icon81.png" alt="Chart" className="w-8 opacity-20 group-hover:opacity-100 transition-all grayscale group-hover:grayscale-0" />
+          <img 
+            src="https://madhurbazar.online/assets/home/images/graph-icon81.png" 
+            alt="Chart" 
+            className="w-8 opacity-20 group-hover:opacity-100 transition-all grayscale group-hover:grayscale-0" 
+            referrerPolicy="no-referrer"
+          />
         </div>
         
         <div className="text-[10px] font-black text-gray-300 uppercase tracking-widest" suppressHydrationWarning>
@@ -280,11 +308,18 @@ function GameCard({ name, time, result }: { name: string; time: string; result: 
         <h3 className="text-center flex items-center justify-between gap-4 text-gray-900 text-2xl font-black mb-8 uppercase tracking-tighter italic">
           <span className="flex-1 text-left">{name}</span>
           <a 
+            id="gamecard-download-button"
+            aria-label="Download APK"
             href="https://madhurbazar.online/app/madhurbazar.apk" 
             onClick={() => trackEvent('CompleteRegistration', { content_name: 'APK Download', placement: 'GameCard Play' })}
             className="w-12 h-12 bg-[#fab028] rounded-2xl flex items-center justify-center shadow-lg shadow-[#fab028]/30 hover:scale-110 transition-transform"
           >
-            <img src="https://madhurbazar.online/assets/home/images/play.png" alt="Play" className="w-6" />
+            <img 
+              src="https://madhurbazar.online/assets/home/images/play.png" 
+              alt="Play" 
+              className="w-6" 
+              referrerPolicy="no-referrer"
+            />
           </a>
         </h3>
 
@@ -342,6 +377,6 @@ const games = [
   { name: "RAJDHANI NIGHT", time: "09:30 PM - 11:45 PM", result: "***-**-***" },
   { name: "MAIN BAZAR", time: "09:40 PM - 12:05 AM", result: "***-**-***" },
   { name: "KARNATAKA DAY", time: "10:00 AM - 11:00 AM", result: "***-**-***" },
-  { name: "KARNATAKA NIGHT", time: "08:00 PM - 09:00 PM", result: "***-**-***" },
+  { name: "KARNATAKA NIGHT", time: "08:00 PM mm - 09:00 PM", result: "***-**-***" },
   { name: "RATAN KHATRI", time: "10:00 PM - 12:00 AM", result: "***-**-***" }
 ];
