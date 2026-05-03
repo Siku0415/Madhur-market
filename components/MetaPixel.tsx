@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import Image from 'next/image';
 
 export default function MetaPixel() {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || '2101646057327760';
@@ -26,12 +27,14 @@ export default function MetaPixel() {
         }}
       />
       <noscript>
-        <img
-          height="1"
-          width="1"
+        <Image
+          height={1}
+          width={1}
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
           alt=""
+          priority
+          unoptimized
         />
       </noscript>
     </>
