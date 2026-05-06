@@ -11,6 +11,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <head>
+        {/* We use standard Script here for maximum visibility to crawlers/tools */}
         <Script
           id="fb-pixel"
           strategy="afterInteractive"
@@ -29,6 +30,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             `,
           }}
         />
+      </head>
+      <body suppressHydrationWarning>
         <noscript>
           <img
             height="1"
@@ -38,8 +41,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             alt=""
           />
         </noscript>
-      </head>
-      <body suppressHydrationWarning>
         {children}
       </body>
     </html>
