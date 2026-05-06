@@ -1,7 +1,6 @@
 'use client';
 
 import Script from 'next/script';
-import Image from 'next/image';
 
 export default function MetaPixel() {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || '1485375615482477';
@@ -9,7 +8,7 @@ export default function MetaPixel() {
   return (
     <>
       <Script
-        id="meta-pixel-base"
+        id="fb-pixel"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
