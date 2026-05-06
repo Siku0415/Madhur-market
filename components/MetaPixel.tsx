@@ -9,7 +9,7 @@ export default function MetaPixel() {
   return (
     <>
       <Script
-        id="meta-pixel"
+        id="meta-pixel-base"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
@@ -23,18 +23,17 @@ export default function MetaPixel() {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${pixelId}');
             fbq('track', 'PageView');
+            console.log('[Meta Pixel] Initialized with ID: ${pixelId}');
           `,
         }}
       />
       <noscript>
-        <Image
-          height={1}
-          width={1}
+        <img
+          height="1"
+          width="1"
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
           alt=""
-          priority
-          unoptimized
         />
       </noscript>
     </>
