@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    trackEvent('PageView');
+    // PageView is handled by the base script in layout.tsx
   }, []);
 
   return (

@@ -1,6 +1,5 @@
 import type {Metadata} from 'next';
 import './globals.css'; // Global styles
-import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Madhur Bazar matka Game | Play Online Game',
@@ -11,9 +10,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <head>
-        <Script
-          id="fb-pixel"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -26,6 +23,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '1485375615482477');
               fbq('track', 'PageView');
+              console.log('Meta Pixel 1485375615482477 initialized');
             `,
           }}
         />
