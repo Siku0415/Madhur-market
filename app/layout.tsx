@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import './globals.css'; // Global styles
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Madhur Bazar matka Game | Play Online Game',
@@ -10,7 +11,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <head>
-        <script
+        <Script
+          id="fb-pixel"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)

@@ -1,5 +1,5 @@
 'use client';
-
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Download, Wallet, ChevronDown, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
@@ -26,6 +26,10 @@ export default function Home() {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
+
+  useEffect(() => {
+    trackEvent('PageView');
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900 pb-20 md:pb-0 overflow-x-hidden">
