@@ -8,8 +8,11 @@ import { trackCapiEvent } from "@/app/actions/tracking";
 
 export default function Home() {
   const handleDownload = async (placement: string) => {
+    console.log(`Tracking Download Click: ${placement}`);
+    
     // Client-side Pixel Tracking
     if (typeof window !== 'undefined' && (window as any).fbq) {
+      console.log('Firing Client Pixel Event...');
       (window as any).fbq('track', 'CompleteRegistration', {
         content_name: 'APK Download',
         placement: placement,
@@ -19,12 +22,18 @@ export default function Home() {
     }
 
     // Server-side Conversions API Tracking
-    await trackCapiEvent('CompleteRegistration', {
-      content_name: 'APK Download',
-      placement: placement,
-      value: 100.0,
-      currency: 'INR'
-    });
+    console.log('Firing Server CAPI Event...');
+    try {
+      const result = await trackCapiEvent('CompleteRegistration', {
+        content_name: 'APK Download',
+        placement: placement,
+        value: 100.0,
+        currency: 'INR'
+      });
+      console.log('CAPI Result:', result);
+    } catch (err) {
+      console.error('CAPI Call Failed:', err);
+    }
   };
   const containerVariants = {
     hidden: { opacity: 0 },

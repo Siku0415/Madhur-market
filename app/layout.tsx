@@ -11,9 +11,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <head>
-        <Script
-          id="fb-pixel"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -26,6 +24,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '751283967242809');
               fbq('track', 'PageView');
+              console.log('Pixel Loaded: 751283967242809');
             `,
           }}
         />
